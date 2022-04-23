@@ -6,6 +6,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import MoviesList from "./components/MoviesList";
 import MovieDetailScreen from './screens/MovieDetailScreen';
 import MovieDetail from './screens/MovieDetail';
+import Login from './screens/Login';
 function HomeScreen({ navigation }) {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
@@ -43,7 +44,7 @@ function HomeTab() {
   return (
     <Tab.Navigator
       screenOptions={{ headerShown: false }}>
-      <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="Home" component={Login} />
       <Tab.Screen name="Profile" component={ProfileScreen} />
       <Tab.Screen name="Feed" component={MoviesList} options={{ StackBarBadge: 3 }} />
     </Tab.Navigator>
