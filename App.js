@@ -4,9 +4,10 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import MoviesList from "./components/MoviesList";
-import MovieDetailScreen from './screens/MovieDetailScreen';
 import MovieDetail from './screens/MovieDetail';
 import Login from './screens/Login';
+import VideoScreen from './screens/VideoScreen';
+import SettingsScreen from './screens/SettingsScreen';
 function HomeScreen({ navigation }) {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
@@ -26,37 +27,34 @@ function HomeScreen({ navigation }) {
     </View>
   );
 }
-function ProfileScreen({ navigation }) {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Profile!</Text>
-      <Button
-        title="Go to home"
-        onPress={() => navigation.navigate('Home')}
-      />
-    </View>
-  );
-}
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
+const HomeStack = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="List" component={MoviesList} />
+      <Stack.Screen name="Detail" component={MovieDetail} />
+    </Stack.Navigator>
+  )
+}
 function HomeTab() {
   return (
     <Tab.Navigator
       screenOptions={{ headerShown: false }}>
-      <Tab.Screen name="Home" component={Login} />
-      <Tab.Screen name="Profile" component={ProfileScreen} />
-      <Tab.Screen name="Feed" component={MoviesList} options={{ StackBarBadge: 3 }} />
+      <Tab.Screen name="Home" component={HomeStack} />
+      <Tab.Screen name="Video" component={VideoScreen} />
+      <Tab.Screen name="Settings" component={SettingsScreen} />
     </Tab.Navigator>
   );
 }
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator
+        screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Home" component={HomeTab} />
-        <Stack.Screen name="Settings" component={MovieDetailScreen} />
-        <Stack.Screen name="Pelicula" component={MovieDetail} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -8,7 +8,7 @@ export default function Login() {
     const [password, onChangePassword] = React.useState('Password')
     const handleSubmit = () => {
         if (text == 'user' && password == 'password') {
-            navigation.navigate('Settings')
+            navigation.navigate('Home')
         } else {
             showToast(false)
         }

@@ -4,7 +4,7 @@ import { useNavigation } from "@react-navigation/native";
 const MovieItem = (props) => {
     const navigation = useNavigation();
     return (
-        <TouchableOpacity style={styles.container} onPress={() => navigation.navigate("Pelicula", { movie: props.movie })}>
+        <TouchableOpacity style={styles.container} onPress={() => navigation.navigate("Detail", { movie: props.movie })}>
             <Image
                 style={styles.tinyLogo}
                 source={{
